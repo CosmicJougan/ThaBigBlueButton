@@ -10,7 +10,7 @@ Now go to the path “C:\xampp\htdocs” and create a new folder named “react�
 This folder name must match the name in [registration.js](../big-blue-button/src/components/registration/registration.js) onSumbit URL after "localhost/".\
 Then inside the “react“ folder, place the files named "connect.php" and "insert.php".
 
-Start xampp.\
+Start xampp and start Apache and MySQL under actions.\
 Then type “http://localhost/phpmyadmin/ ” on your browser. After the PHPMyAdmin opened, click on the Databases.
 Now create a database named users.\
 Then create a table named “users”. Here we need 3 columns to store id, name and password.\
