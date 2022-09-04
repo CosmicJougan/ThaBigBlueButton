@@ -20,5 +20,5 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ### `Links`
 
-https://www.educative.io/answers/how-to-set-up-prettier-and-automatic-formatting-on-vs-code
+https://www.educative.io/answers/how-to-set-up-prettier-and-automatic-formatting-on-vs-code \
 https://mui.com/material-ui/api/button/
