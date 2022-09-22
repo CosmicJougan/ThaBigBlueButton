@@ -9,6 +9,7 @@ function TextBox(props) {
         label={props.label}
         value={props.value}
         onChange={props.onChange}
+        type={props.type}
         variant="outlined"
         style={{ width: "100%" }}
       />

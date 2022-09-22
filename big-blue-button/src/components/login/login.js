@@ -1,4 +1,4 @@
-import "./registration.css";
+import "./login.css";
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -7,13 +7,12 @@ import Button from "@mui/material/Button";
 import TextBox from "../../core/textField";
 import { Component } from "react";
 
-class Registration extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
-    this.onChangeConfirmPassword = this.onChangeConfirmPassword.bind(this);
     this.sha256func = this.sha256func.bind(this);
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -21,7 +20,6 @@ class Registration extends Component {
     this.state = {
       username: "",
       password: "",
-      confirmedPassword: "",
     };
   }
 
@@ -30,7 +28,7 @@ class Registration extends Component {
       <div className="card">
         <Card className="cardStyle">
           <CardContent>
-            <div className="signupText">SIGNUP</div>
+            <div className="signupText">SIGNIN</div>
             <TextBox
               label="Username"
               value={this.state.username}
@@ -43,12 +41,6 @@ class Registration extends Component {
               value={this.state.password}
               onChange={this.onChangePassword}
             />
-            <TextBox
-              label="Confirm Password"
-              type="password"
-              value={this.state.confirmedPassword}
-              onChange={this.onChangeConfirmPassword}
-            />
           </CardContent>
           <CardActions className="CardActions">
             <Button
@@ -57,7 +49,7 @@ class Registration extends Component {
                 await this.onSubmit;
               }}
             >
-              REGISTER
+              LOGIN
             </Button>
           </CardActions>
         </Card>
@@ -83,7 +75,6 @@ class Registration extends Component {
     });
   }
 
-  //Thanks stackoverflow!
   async sha256func(message) {
     // encode as UTF-8
     const msgBuffer = new TextEncoder().encode(message);
@@ -104,36 +95,8 @@ class Registration extends Component {
   async onSubmit(e) {
     e.preventDefault();
 
-    if (this.state.password === this.state.confirmedPassword) {
-      var temp = await this.sha256func(this.state.password);
-      const obj = {
-        username: this.state.username,
-        password: temp,
-      };
-
-      const url = "http://localhost/react/insert.php";
-      const options = {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json;charset=UTF-8",
-        },
-        body: JSON.stringify(obj),
-      };
-
-      fetch(url, options).then((response) => {
-        console.log(response.status);
-      });
-
-      this.setState({
-        username: "",
-        password: "",
-        passwordConform: "",
-      });
-    } else {
-      alert("Password mismatch");
-    }
+    // TODO login logic
   }
 }
 
-export default Registration;
+export default Login;

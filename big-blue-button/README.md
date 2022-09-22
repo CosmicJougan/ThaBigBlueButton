@@ -21,4 +21,11 @@ It correctly bundles React in production mode and optimizes the build for the be
 ### `Links`
 
 https://www.educative.io/answers/how-to-set-up-prettier-and-automatic-formatting-on-vs-code \
-https://mui.com/material-ui/api/button/
+https://mui.com/material-ui/api/button/ \
+https://blog.bitsrc.io/performing-http-requests-fetch-vs-axios-b62b44fed10d \
+
+### `TODO`
+
+Add registration confirmation
+Default to loginpage, not registration -> move to different button
+Add account icon inside hamburger menu
