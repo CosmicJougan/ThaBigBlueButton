@@ -4,16 +4,16 @@ import Infoscreen from '../infoscreen/infoscreen';
 
 function Buttons(){
     
-    const[Active, setActive] = useState({StartButton})
+    const[Active, setActive] = useState(<StartButton/>)
     
     const handleStart=()=>{
-        setActive({StopButton})
+        setActive(<StopButton/>)
     }
     const handleStop=()=>{
-        setActive({InfoScreen})
+        setActive(<InfoFunction/>)
     }
     const handleInfo=()=>{
-        setActive({StartButton})
+        setActive(<StartButton/>)
     }
 
 
@@ -37,20 +37,20 @@ function Buttons(){
             </div>
         )
        }
-        function InfoScreen(){
+        function InfoFunction(){
         return(
             <div>
-                        <Infoscreen/>
-                        <button onClick={handleInfo}>
+                        <infoScreen/>
+                        <button className='verderButton' onClick={handleInfo}>
                             verder
                         </button>
             </div>
         )
-        } 
-            
+        }    
         return(
-            {StartButton}
-        )
-            
+            <div>
+                {Active}
+            </div>
+        )         
 }
 export default Buttons;
