@@ -45,87 +45,6 @@ const ResponsiveAppBar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleLogIn = () => {
-    setActiveBox(<LoggedinBox/>)
-  }
-  const handleLogOut = () => {
-    setActiveBox(<GuestBox/>)
-  }
-
-  const[ActiveBox, setActiveBox] = useState(<GuestBox/>)
-
-
-  function GuestBox(){
-    return(
-      <div>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-            <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-            </Tooltip>
-            <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleLogIn}>Login</MenuItem>
-                <MenuItem onClick={handleClose}>Sign up</MenuItem>
-              </Menu>
-          </Box>
-      </div>
-    )
-  }
-  function LoggedinBox(){
-    return(
-      <div>
-      <Box sx={{ flexGrow: 0 }}>
-      <Tooltip title="Open settings">
-        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-        </IconButton>
-      </Tooltip>
-      <Menu
-        sx={{ mt: '45px' }}
-        id="menu-appbar"
-        anchorEl={anchorElUser}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        keepMounted
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>Account settings</MenuItem>
-        <MenuItem onClick={handleLogOut}>Log out</MenuItem>
-      </Menu>
-    </Box>    
-    </div>
-    )
-  }
 
   return (
     <div className='naviBar'>
@@ -211,8 +130,33 @@ const ResponsiveAppBar = () => {
           <MenuItem onClick={handleClose}>Overzicht</MenuItem>
           <MenuItem onClick={handleClose}>Files</MenuItem>
           </Box>
-          <GuestBox/>
-          <LoggedinBox/>
+          <Box sx={{ flexGrow: 0 }}>
+      <Tooltip title="Open settings">
+        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+          <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+        </IconButton>
+      </Tooltip>
+      <Menu
+        sx={{ mt: '45px' }}
+        id="menu-appbar"
+        anchorEl={anchorElUser}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        open={Boolean(anchorElUser)}
+        onClose={handleCloseUserMenu}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>Account settings</MenuItem>
+        <MenuItem onClick={handleClose}>Log out</MenuItem>
+      </Menu>
+    </Box>    
         </Toolbar>
       </Container>
     </AppBar>

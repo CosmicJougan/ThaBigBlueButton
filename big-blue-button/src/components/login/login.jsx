@@ -94,8 +94,9 @@ class Login extends Component {
 
   async onSubmit(e) {
     e.preventDefault();
-
+    var Loggedin = true
     // TODO login logic
+
   }
 }
 

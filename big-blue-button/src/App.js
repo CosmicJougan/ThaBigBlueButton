@@ -1,14 +1,11 @@
 import "./App.css";
-import Registration from "./components/registration/registration";
-import Login from "./components/login/login";
-import Buttons from "./components/buttons/buttons";
-import ResponsiveAppBar from "./components/navBar/navBar";
+import Assembled from "./Assembled";
+import Werkdeel from "./components/werkdeel/Werkdeel";
 
 function App() {
   return (
-      <div className="App-header">
-      <ResponsiveAppBar/>
-        <Buttons />
+      <div>
+          <Assembled/>
       </div>
 
   );
