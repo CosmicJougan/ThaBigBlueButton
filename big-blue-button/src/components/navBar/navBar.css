@@ -3,3 +3,9 @@
     top: 0px;
     width: 100%;
 }
+.navName{
+    color: white;
+    background: none;
+    border-style: hidden;
+    font-size: x-large;
+}
