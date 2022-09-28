@@ -15,3 +15,5 @@ Then type “http://localhost/phpmyadmin/ ” on your browser. After the PHPMyAd
 Now create a database named users.\
 Then create a table named “users”. Here we need 3 columns to store id, name and password.\
 Now give column names and data types (INT for id, VARCHAR for name and password). Here we have to set "id" as Primary Key and Autoincrement (A.I).
+
+https://blog.logrocket.com/build-rest-api-node-express-mysql/#rest-api-project-structure
