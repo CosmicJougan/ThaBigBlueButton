@@ -1,0 +1,8 @@
+.timesStyle{
+    color: white;
+    margin-top: 20px;
+    position:absolute; 
+    border-style: solid;
+    border-color: aliceblue;
+    top: 75px;
+}

@@ -125,7 +125,7 @@ const ResponsiveAppBar = () => {
                   sx={{ p: 0 }}
                   className="navName"
                 >
-                  Stefan Thijs
+                  Naam hier
                 </button>
               </Tooltip>
               <Menu

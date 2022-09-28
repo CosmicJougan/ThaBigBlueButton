@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./buttons.css";
 import Infoscreen from "../infoscreen/infoscreen";
 
+
 function Buttons() {
   const useLocalStorage = (storageKey, fallbackState) => {
     const [value, setValue] = useState(
@@ -25,10 +26,16 @@ function Buttons() {
     console.log(Start);
   };
   const handleStop = () => {
-    setStop(Date.now());
-    setActive(<InfoFunction />);
-    console.log(Stop);
+    setActive(<AssuranceButton />);
   };
+  const handleResume = () =>{
+    setStop(Date.now());
+    setActive(<InfoFunction/>)
+    console.log(Stop);
+  }
+  const handleCancel = () =>{
+    setActive(<StopButton />);
+  }
   const handleInfo = () => {
     console.log(Stop - Start);
     setActive(<StartButton />);
@@ -39,6 +46,19 @@ function Buttons() {
       <div>
         <button className="startButton" onClick={handleStart}>
           start
+        </button>
+      </div>
+    );
+  }
+  function AssuranceButton() {
+    return (
+      <div className="assuranceDiv">
+        <h3>Ben je zeker dat je wilt stoppen?</h3>
+        <button className="cancelButton" onClick={handleCancel}>
+          cancel
+        </button>
+        <button className="resumeButton" onClick={handleResume}>
+          resume
         </button>
       </div>
     );
