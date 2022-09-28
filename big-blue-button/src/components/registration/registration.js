@@ -56,9 +56,7 @@ class Registration extends Component {
               onClick={async () => {
                 await this.onSubmit;
               }}
-            >
-              REGISTER
-            </Button>
+            ></Button>
           </CardActions>
         </Card>
       </div>

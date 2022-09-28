@@ -1,6 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-function Infoscreen(){
-
-}
+function Infoscreen() {}
 export default Infoscreen;

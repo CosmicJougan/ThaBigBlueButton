@@ -3,9 +3,21 @@ import "./buttons.css";
 import Infoscreen from "../infoscreen/infoscreen";
 
 function Buttons() {
+  const useLocalStorage = (storageKey, fallbackState) => {
+    const [value, setValue] = useState(
+      JSON.parse(localStorage.getItem(storageKey)) ?? fallbackState
+    );
+
+    useEffect(() => {
+      localStorage.setItem(storageKey, JSON.stringify(value));
+    }, [value, storageKey]);
+
+    return [value, setValue];
+  };
+
   const [Active, setActive] = useState(<StartButton />);
-  const [Start, setStart] = useState(0);
-  const [Stop, setStop] = useState(0);
+  const [Start, setStart] = useLocalStorage("startTimestamp", 0);
+  const [Stop, setStop] = useLocalStorage("stopTimestamp", 0);
 
   const handleStart = () => {
     setStart(Date.now());
@@ -15,10 +27,10 @@ function Buttons() {
   const handleStop = () => {
     setStop(Date.now());
     setActive(<InfoFunction />);
-    console.log(Start, Stop);
+    console.log(Stop);
   };
   const handleInfo = () => {
-    console.log(Stop);
+    console.log(Stop - Start);
     setActive(<StartButton />);
   };
 
@@ -50,12 +62,6 @@ function Buttons() {
       </div>
     );
   }
-  return (
-    <div>
-      <StartButton />
-      <StopButton />
-      <InfoFunction />
-    </div>
-  );
+  return <div>{Active}</div>;
 }
 export default Buttons;
