@@ -1,20 +1,16 @@
-const express = require("express");
+import express, { json, urlencoded } from "express";
 const app = express();
 const port = 3000;
-const usersRouter = require("./routes/users");
+import { userRouter } from "./routes/userRouter.js";
 
-app.use(express.json());
+app.use(json());
 app.use(
-  express.urlencoded({
+  urlencoded({
     extended: true,
   })
 );
 
-app.get("/", (req, res) => {
-  res.json({ message: "ok" });
-});
-
-app.use("/users", usersRouter);
+app.use("/users", userRouter);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {

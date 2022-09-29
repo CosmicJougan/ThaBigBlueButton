@@ -1,13 +1,10 @@
-const mysql = require("mysql2/promise");
-const config = require("../config");
+import mysql from "mysql2/promise";
 
-async function query(sql, params) {
-  const connection = await mysql.createConnection(config.db);
-  const [results] = await connection.execute(sql, params);
-
-  return results;
-}
-
-module.exports = {
-  query,
-};
+export const pool = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  database: "users",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+});
