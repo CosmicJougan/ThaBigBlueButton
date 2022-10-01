@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import TextBox from "../../core/textField";
 import { Component } from "react";
+import { fetchWrapper } from "../../utils/fetchWrapper";
 
 class Registration extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Registration extends Component {
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onChangeConfirmPassword = this.onChangeConfirmPassword.bind(this);
     this.sha256func = this.sha256func.bind(this);
+    this.clearState = this.clearState.bind(this);
 
     this.onSubmit = this.onSubmit.bind(this);
 
@@ -53,10 +55,10 @@ class Registration extends Component {
           <CardActions className="CardActions">
             <Button
               style={{ background: "black", color: "white" }}
-              onClick={async () => {
-                await this.onSubmit;
-              }}
-            ></Button>
+              onClick={this.onSubmit}
+            >
+              REGISTER
+            </Button>
           </CardActions>
         </Card>
       </div>
@@ -104,33 +106,46 @@ class Registration extends Component {
 
     if (this.state.password === this.state.confirmedPassword) {
       var temp = await this.sha256func(this.state.password);
-      const obj = {
-        username: this.state.username,
+      const body = {
+        name: this.state.username,
         password: temp,
       };
 
-      const url = "http://localhost/react/insert.php";
-      const options = {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json;charset=UTF-8",
-        },
-        body: JSON.stringify(obj),
-      };
+      let userExists = false;
+      await fetchWrapper
+        .get(`http://localhost:3000/users/${this.state.username}`)
+        .then((data) => {
+          if (data !== null) {
+            alert("This user already exists, please pick another!");
+            this.clearState();
+            userExists = true;
+          }
+        })
+        .catch((error) =>
+          console.error("There was an error retrieving the user!", error)
+        );
 
-      fetch(url, options).then((response) => {
-        console.log(response.status);
-      });
+      if (!userExists) {
+        await fetchWrapper
+          .post("http://localhost:3000/users/", body)
+          .then(() => console.log("Success adding new users!"))
+          .catch((error) =>
+            console.error("There was an error adding a new user!", error)
+          );
+      }
 
-      this.setState({
-        username: "",
-        password: "",
-        passwordConform: "",
-      });
+      this.clearState();
     } else {
       alert("Password mismatch");
     }
+  }
+
+  clearState() {
+    this.setState({
+      username: "",
+      password: "",
+      confirmedPassword: "",
+    });
   }
 }
 

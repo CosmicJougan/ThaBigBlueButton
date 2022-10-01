@@ -1,12 +1,19 @@
-import { pool } from "./db.js";
+import { pool } from "./pool.js";
 
-export const findUserById = async (id) => {
-  const result = await pool.query("SELECT * FROM users WHERE id=?", [id]);
+export const findUserByName = async (name) => {
+  const result = await pool.query("SELECT * FROM users WHERE name=?", [name]);
 
   if (result[0].length < 1) {
-    throw new Error("User with this id was not found");
+    console.log("User with this id was not found");
+    return null;
   }
   return result[0][0];
+};
+
+export const getAllUsers = async () => {
+  const result = await pool.query("SELECT * FROM users");
+
+  return result[0];
 };
 
 export const storeUser = async (user) => {

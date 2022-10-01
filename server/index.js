@@ -1,7 +1,9 @@
 import express, { json, urlencoded } from "express";
+import cors from "cors";
+
 const app = express();
 const port = 3000;
-import { userRouter } from "./routes/userRouter.js";
+import { usersController } from "./routes/usersController.js";
 
 app.use(json());
 app.use(
@@ -10,7 +12,21 @@ app.use(
   })
 );
 
-app.use("/users", userRouter);
+app.use("/users", usersController);
+
+app.use(cors());
+// app.use(
+//   cors({
+//     origin: "*",
+//     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT"],
+//   })
+// );
+
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//   next();
+// });
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
