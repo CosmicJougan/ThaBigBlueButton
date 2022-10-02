@@ -13,7 +13,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Workpart from "../workpart/Workpart";
 import "./navBar.css";
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [_, setAnchorEl] = React.useState(null);
@@ -35,17 +35,6 @@ const ResponsiveAppBar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleTimer = () =>{
-
-  }
-  const handleOverzicht = () =>{
-    <Workpart
-        setActive = {chooseMenu}
-    />
-  }
-  const handleFiles = () =>{
-    
-  }
 
   return (
     <div className="naviBar">
@@ -100,9 +89,9 @@ const ResponsiveAppBar = () => {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                <MenuItem onClick={handleTimer}>Start/Stop</MenuItem>
-                <MenuItem onClick={handleOverzicht}>Overzicht</MenuItem>
-                <MenuItem onClick={handleFiles}>Files</MenuItem>
+                <MenuItem onClick={props.openTimer}>Start/Stop</MenuItem>
+                <MenuItem onClick={props.openOverview}>Overzicht</MenuItem>
+                <MenuItem onClick={props.openFiles}>Files</MenuItem>
               </Menu>
             </Box>
             <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -125,9 +114,9 @@ const ResponsiveAppBar = () => {
               RELAXANI
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <MenuItem onClick={handleTimer}>Start/Stop</MenuItem>
-                <MenuItem onClick={handleOverzicht}>Overzicht</MenuItem>
-                <MenuItem onClick={handleFiles}>Files</MenuItem>
+            <MenuItem onClick={props.openTimer}>Start/Stop</MenuItem>
+                <MenuItem onClick={props.openOverview}>Overzicht</MenuItem>
+                <MenuItem onClick={props.openFiles}>Files</MenuItem>
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
@@ -156,9 +145,9 @@ const ResponsiveAppBar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Account settings</MenuItem>
-                <MenuItem onClick={handleClose}>Log out</MenuItem>
+                <MenuItem onClick={props.openTimer}>Start/Stop</MenuItem>
+                <MenuItem onClick={props.openOverview}>Overzicht</MenuItem>
+                <MenuItem onClick={props.openFiles}>Files</MenuItem>
               </Menu>
             </Box>
           </Toolbar>
