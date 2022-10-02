@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Workpart from "../workpart/Workpart";
 import "./navBar.css";
 
 const ResponsiveAppBar = () => {
@@ -34,6 +35,17 @@ const ResponsiveAppBar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleTimer = () =>{
+
+  }
+  const handleOverzicht = () =>{
+    <Workpart
+        setActive = {chooseMenu}
+    />
+  }
+  const handleFiles = () =>{
+    
+  }
 
   return (
     <div className="naviBar">
@@ -88,9 +100,9 @@ const ResponsiveAppBar = () => {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                <MenuItem onClick={handleClose}>Start/Stop</MenuItem>
-                <MenuItem onClick={handleClose}>Overzicht</MenuItem>
-                <MenuItem onClick={handleClose}>Files</MenuItem>
+                <MenuItem onClick={handleTimer}>Start/Stop</MenuItem>
+                <MenuItem onClick={handleOverzicht}>Overzicht</MenuItem>
+                <MenuItem onClick={handleFiles}>Files</MenuItem>
               </Menu>
             </Box>
             <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -113,9 +125,9 @@ const ResponsiveAppBar = () => {
               RELAXANI
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              <MenuItem onClick={handleClose}>Start/Stop</MenuItem>
-              <MenuItem onClick={handleClose}>Overzicht</MenuItem>
-              <MenuItem onClick={handleClose}>Files</MenuItem>
+            <MenuItem onClick={handleTimer}>Start/Stop</MenuItem>
+                <MenuItem onClick={handleOverzicht}>Overzicht</MenuItem>
+                <MenuItem onClick={handleFiles}>Files</MenuItem>
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
