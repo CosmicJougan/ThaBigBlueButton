@@ -1,5 +1,5 @@
 .App {
-  background-color:aliceblue;
+  background-color: aliceblue;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,8 +21,7 @@
 }
 
 .App-header {
-
-  background-color:rgba(2, 117, 206, 0.966);
+  background-color: rgba(2, 117, 206, 0.966);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -43,4 +42,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.clock-holder {
+  width: 100%;
+  position: relative;
+}
+
+.stopwatch {
+  padding: 30px 0px;
+  text-align: center;
+}
+.stopwatch span {
+  background: #00aba9;
+  color: #fff;
+  display: inline-block;
+  font-family: monospace;
+  font-size: 22px;
+  padding: 20px;
+  border-radius: 5px;
+  width: 70px;
 }
