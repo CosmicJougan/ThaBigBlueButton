@@ -5,7 +5,7 @@ import Registration from "./components/registration/registration";
 function App() {
   return (
     <div>
-      <Registration />
+      <Assembled />
     </div>
   );
 }
