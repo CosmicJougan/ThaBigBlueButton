@@ -10,9 +10,10 @@ import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Workpart from "../workpart/Workpart";
 import "./navBar.css";
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [_, setAnchorEl] = React.useState(null);
@@ -88,9 +89,9 @@ const ResponsiveAppBar = () => {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                <MenuItem onClick={handleClose}>Start/Stop</MenuItem>
-                <MenuItem onClick={handleClose}>Overzicht</MenuItem>
-                <MenuItem onClick={handleClose}>Files</MenuItem>
+                <MenuItem onClick={props.openTimer}>Start/Stop</MenuItem>
+                <MenuItem onClick={props.openOverview}>Overzicht</MenuItem>
+                <MenuItem onClick={props.openFiles}>Files</MenuItem>
               </Menu>
             </Box>
             <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -113,9 +114,9 @@ const ResponsiveAppBar = () => {
               RELAXANI
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              <MenuItem onClick={handleClose}>Start/Stop</MenuItem>
-              <MenuItem onClick={handleClose}>Overzicht</MenuItem>
-              <MenuItem onClick={handleClose}>Files</MenuItem>
+            <MenuItem onClick={props.openTimer}>Start/Stop</MenuItem>
+                <MenuItem onClick={props.openOverview}>Overzicht</MenuItem>
+                <MenuItem onClick={props.openFiles}>Files</MenuItem>
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
@@ -144,9 +145,9 @@ const ResponsiveAppBar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Account settings</MenuItem>
-                <MenuItem onClick={handleClose}>Log out</MenuItem>
+                <MenuItem onClick={props.openTimer}>Start/Stop</MenuItem>
+                <MenuItem onClick={props.openOverview}>Overzicht</MenuItem>
+                <MenuItem onClick={props.openFiles}>Files</MenuItem>
               </Menu>
             </Box>
           </Toolbar>
