@@ -4,6 +4,7 @@ import Clock from "../clock/clock";
 import Overview from "../overview/overview";
 import Files from "../files/files";
 import { useState } from "react";
+import "./workpart.css";
 
 function Workpart(props) {
   const [Active, setActive] = useState(<Buttons />);
@@ -25,7 +26,8 @@ function Workpart(props) {
         openFiles={openFiles}
         openTimer={openTimer}
       />
-      <Buttons
+      <div className="centered">
+        <Buttons
         status={props.status}
         resume={props.resume}
         reset={props.reset}
@@ -38,6 +40,8 @@ function Workpart(props) {
           <Clock time={props.time} />
         </div>
       </div>
+      </div>
+      
     </div>
   );
 }
