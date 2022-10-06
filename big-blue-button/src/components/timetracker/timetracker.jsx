@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { fetchWrapper } from "utils/fetchWrapper";
-import "./buttons.css";
+import "./timetracker.css";
 
-function Buttons() {
+function TimeTracker() {
   const useLocalStorage = (storageKey, fallbackState) => {
     const [value, setValue] = React.useState(
       JSON.parse(localStorage.getItem(storageKey)) ?? fallbackState
@@ -101,7 +101,7 @@ function Buttons() {
   return (
     <div>
       {status === 0 ? (
-        <button className="startButton" onClick={start}>
+        <button className="timerActionButon startButton" onClick={start}>
           Start
         </button>
       ) : (
@@ -110,7 +110,7 @@ function Buttons() {
 
       {status === 1 ? (
         <div>
-          <button className="stopButton" onClick={stop}>
+          <button className="timerActionButon stopButton" onClick={stop}>
             Stop
           </button>
         </div>
@@ -120,13 +120,13 @@ function Buttons() {
 
       {status === 2 ? (
         <div>
-          <button className="startButton" onClick={resume}>
+          <button className="timerActionButon startButton" onClick={resume}>
             Hervat
           </button>
-          <button className="stopButton" onClick={reset}>
+          <button className="timerActionButon resetButton" onClick={reset}>
             Reset
           </button>
-          <button className="saveButton" onClick={register}>
+          <button className="timerActionButon saveButton" onClick={register}>
             Opslaan
           </button>
         </div>
@@ -146,4 +146,4 @@ function Buttons() {
     </div>
   );
 }
-export default Buttons;
+export default TimeTracker;

@@ -1,11 +1,11 @@
 import "./App.css";
-import Workpart from "./components/workpart/Workpart";
 import React from "react";
+import ResponsiveAppBar from "components/navBar/navBar";
 
 function App() {
   return (
-    <div>
-      <Workpart />
+    <div className="App-header">
+      <ResponsiveAppBar />
     </div>
   );
 }

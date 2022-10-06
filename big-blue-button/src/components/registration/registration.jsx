@@ -1,12 +1,12 @@
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import TextBox from "../../core/textField";
-import React, { useState } from "react";
-import "./login.css";
+import { fetchWrapper } from "../../utils/fetchWrapper";
 
-function Login() {
+const Registration = () => {
   const [state, setState] = useState({
     username: "",
     password: "",
@@ -24,6 +24,13 @@ function Login() {
     setState({
       ...state,
       password: e.target.value,
+    });
+  };
+
+  const onChangeConfirmPassword = (e) => {
+    setState({
+      ...state,
+      confirmedPassword: e.target.value,
     });
   };
 
@@ -45,17 +52,58 @@ function Login() {
     return hashHex;
   };
 
+  const clearState = () => {
+    setState({
+      username: "",
+      password: "",
+      confirmedPassword: "",
+    });
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    //var Loggedin = true;
-    // TODO login logic
+
+    if (state.password === state.confirmedPassword) {
+      var temp = await sha256func(state.password);
+      const body = {
+        name: state.username,
+        password: temp,
+      };
+
+      let userExists = false;
+      await fetchWrapper
+        .get(`http://localhost:3000/users/${state.username}`)
+        .then((data) => {
+          if (data !== null) {
+            alert("This user already exists, please pick another!");
+            clearState();
+            userExists = true;
+          }
+        })
+        .catch((error) =>
+          console.error("There was an error retrieving the user!", error)
+        );
+
+      if (!userExists) {
+        await fetchWrapper
+          .post("http://localhost:3000/users/", body)
+          .then(() => console.log("Success adding new users!"))
+          .catch((error) =>
+            console.error("There was an error adding a new user!", error)
+          );
+      }
+
+      clearState();
+    } else {
+      alert("Password mismatch");
+    }
   };
 
   return (
     <div className="card">
       <Card className="cardStyle">
         <CardContent>
-          <div className="signupText">SIGNIN</div>
+          <div className="signupText">SIGNUP</div>
           <TextBox
             label="Username"
             value={state.username}
@@ -68,20 +116,24 @@ function Login() {
             value={state.password}
             onChange={onChangePassword}
           />
+          <TextBox
+            label="Confirm Password"
+            type="password"
+            value={state.confirmedPassword}
+            onChange={onChangeConfirmPassword}
+          />
         </CardContent>
         <CardActions className="cardActions">
           <Button
             style={{ background: "black", color: "white" }}
-            onClick={async () => {
-              await onSubmit;
-            }}
+            onClick={onSubmit}
           >
-            LOGIN
+            REGISTER
           </Button>
         </CardActions>
       </Card>
     </div>
   );
-}
+};
 
-export default Login;
+export default Registration;

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,19 +10,18 @@ import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import Workpart from "../workpart/Workpart";
+import { Link, Route, Routes } from "react-router-dom";
 import "./navBar.css";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Overview from "components/overview/overview";
-import Buttons from "components/buttons/buttons";
-import Clock from "components/clock/clock";
+import TimeTracker from "components/timetracker/timetracker";
 import Files from "components/files/files";
 import Login from "components/login/login";
+import Registration from "components/registration/registration";
 
 const ResponsiveAppBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [_, setAnchorEl] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [_, setAnchorEl] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -37,9 +36,6 @@ const ResponsiveAppBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
   };
 
   return (
@@ -219,12 +215,13 @@ const ResponsiveAppBar = () => {
           path="/timer"
           element={
             <div className="centered">
-              <Buttons />
+              <TimeTracker />
             </div>
           }
         />
         <Route path="/overview" element={<Overview />} />
         <Route path="/files" element={<Files />} />
+        <Route path="/register" element={<Registration />} />
       </Routes>
     </div>
   );
