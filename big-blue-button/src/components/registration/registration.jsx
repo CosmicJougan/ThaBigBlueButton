@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import TextBox from "../../core/textField";
 import { fetchWrapper } from "../../utils/fetchWrapper";
 
-const Registration = () => {
+function Registration() {
   const [state, setState] = useState({
     username: "",
     password: "",
@@ -134,6 +134,6 @@ const Registration = () => {
       </Card>
     </div>
   );
-};
+}
 
 export default Registration;

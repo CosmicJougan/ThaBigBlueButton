@@ -18,7 +18,7 @@ import Files from "components/files/files";
 import Login from "components/login/login";
 import Registration from "components/registration/registration";
 
-const ResponsiveAppBar = () => {
+function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [_, setAnchorEl] = useState(null);
@@ -225,5 +225,5 @@ const ResponsiveAppBar = () => {
       </Routes>
     </div>
   );
-};
+}
 export default ResponsiveAppBar;
