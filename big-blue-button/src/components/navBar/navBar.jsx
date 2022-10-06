@@ -12,8 +12,14 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Workpart from "../workpart/Workpart";
 import "./navBar.css";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import Overview from "components/overview/overview";
+import Buttons from "components/buttons/buttons";
+import Clock from "components/clock/clock";
+import Files from "components/files/files";
+import Login from "components/login/login";
 
-const ResponsiveAppBar = (props) => {
+const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [_, setAnchorEl] = React.useState(null);
@@ -89,9 +95,27 @@ const ResponsiveAppBar = (props) => {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                <MenuItem onClick={props.openTimer}>Start/Stop</MenuItem>
-                <MenuItem onClick={props.openOverview}>Overzicht</MenuItem>
-                <MenuItem onClick={props.openFiles}>Files</MenuItem>
+                <MenuItem
+                  onClick={() => setAnchorEl(null)}
+                  component={Link}
+                  to={"/timer"}
+                >
+                  Start/Stop
+                </MenuItem>
+                <MenuItem
+                  onClick={() => setAnchorEl(null)}
+                  component={Link}
+                  to={"/overview"}
+                >
+                  Overzicht
+                </MenuItem>
+                <MenuItem
+                  onClick={() => setAnchorEl(null)}
+                  component={Link}
+                  to={"/files"}
+                >
+                  Files
+                </MenuItem>
               </Menu>
             </Box>
             <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -114,9 +138,27 @@ const ResponsiveAppBar = (props) => {
               RELAXANI
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <MenuItem onClick={props.openTimer}>Start/Stop</MenuItem>
-                <MenuItem onClick={props.openOverview}>Overzicht</MenuItem>
-                <MenuItem onClick={props.openFiles}>Files</MenuItem>
+              <MenuItem
+                onClick={() => setAnchorEl(null)}
+                component={Link}
+                to={"/timer"}
+              >
+                Start/Stop
+              </MenuItem>
+              <MenuItem
+                onClick={() => setAnchorEl(null)}
+                component={Link}
+                to={"/overview"}
+              >
+                Overzicht
+              </MenuItem>
+              <MenuItem
+                onClick={() => setAnchorEl(null)}
+                component={Link}
+                to={"/files"}
+              >
+                Files
+              </MenuItem>
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
@@ -145,14 +187,45 @@ const ResponsiveAppBar = (props) => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={props.openTimer}>Start/Stop</MenuItem>
-                <MenuItem onClick={props.openOverview}>Overzicht</MenuItem>
-                <MenuItem onClick={props.openFiles}>Files</MenuItem>
+                <MenuItem
+                  onClick={() => setAnchorEl(null)}
+                  component={Link}
+                  to={"/timer"}
+                >
+                  Start/Stop
+                </MenuItem>
+                <MenuItem
+                  onClick={() => setAnchorEl(null)}
+                  component={Link}
+                  to={"/overview"}
+                >
+                  Overzicht
+                </MenuItem>
+                <MenuItem
+                  onClick={() => setAnchorEl(null)}
+                  component={Link}
+                  to={"/files"}
+                >
+                  Files
+                </MenuItem>
               </Menu>
             </Box>
           </Toolbar>
         </Container>
       </AppBar>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route
+          path="/timer"
+          element={
+            <div className="centered">
+              <Buttons />
+            </div>
+          }
+        />
+        <Route path="/overview" element={<Overview />} />
+        <Route path="/files" element={<Files />} />
+      </Routes>
     </div>
   );
 };
