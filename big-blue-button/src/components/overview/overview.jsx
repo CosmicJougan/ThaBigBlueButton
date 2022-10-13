@@ -1,8 +1,9 @@
 import React from "react";
+import Tabs from "components/tabs/tabs";
 
 function Overview(){
     return(
-        <p>functioneel</p>
+        <Tabs/>
     )
 }
 export default Overview;

@@ -1,0 +1,55 @@
+.tab{
+    background-color: rgb(33, 33, 53);
+    color: white;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    font-weight: bold;
+    margin:20px;
+    border-radius: 10px;
+}
+.tabHeader{
+ background-color: rgb(255, 78, 8);
+ font-size: small;
+ height: 40px;
+ position:relative;
+ transform: translateY(-58%);
+ border-radius: 10px 10px 0px 0px;
+}
+.tabContent{
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.returnDiv{
+    position:absolute;
+    top: 15%;
+    transform: translateY(-50%);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1100px;
+    height: 800px;
+    font-size: calc(10px + 2vmin);
+    color: rgb(0, 0, 0);
+
+}
+.Grid{
+    width: 100%;
+    left: 50%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.appearFT{
+    vertical-align: top;
+}
+.centerCol{
+   justify-content: center;
+}
+.drivenKM{
+    font-size:small;
+}
+.opgetelt{
+    position: relative;
+    transform: translateY(20%);
+}
