@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchWrapper } from "utils/fetchWrapper";
 import "./timetracker.css";
 
 function TimeTracker() {
   const useLocalStorage = (storageKey, fallbackState) => {
-    const [value, setValue] = React.useState(
+    const [value, setValue] = useState(
       JSON.parse(localStorage.getItem(storageKey)) ?? fallbackState
     );
 
-    React.useEffect(() => {
+    useEffect(() => {
       localStorage.setItem(storageKey, JSON.stringify(value));
     }, [value, storageKey]);
 
@@ -22,10 +22,11 @@ function TimeTracker() {
     h: 0,
   });
   const [interv, setInterv] = useState();
-  const [status, setStatus] = useLocalStorage("timerRunning", 0);
+
   // Not started = 0
   // started = 1
   // stopped = 2
+  const [status, setStatus] = useLocalStorage("timerRunning", 0);
 
   const start = () => {
     run();
@@ -41,7 +42,6 @@ function TimeTracker() {
   const run = () => {
     if (updatedM === 59) {
       updatedH++;
-      updatedM = 0;
     }
     if (updatedS === 59) {
       updatedM++;
@@ -70,26 +70,48 @@ function TimeTracker() {
     return time.s + time.m * 60 + time.h * 60 * 60;
   };
 
+  const getDay = (number) => {
+    switch (number) {
+      case 1:
+        return "monday";
+      default:
+        return "monday";
+    }
+  };
+
   const resume = () => start();
 
   // https://docs.google.com/spreadsheets/d/1d_2S2XhV6ZHfxXu89PLBuVNN4kOX-Fi3YQ6801eEWL4/edit?usp=sharing
   const register = async () => {
-    await fetchWrapper
-      .post(
-        "https://sheet.best/api/sheets/7ddd0021-8bb1-4be3-badd-0bf2ecb932f8",
-        {
-          users: "Michael",
-          sunday: calculateTimestamp(),
-        }
-      )
-      .then((response) => {
-        console.log(response);
-        reset();
-      })
-      .catch((error) =>
-        console.error("There was an error adding to sheets!", error)
-      );
+    // await fetchWrapper
+    //   .post(
+    //     "https://sheet.best/api/sheets/7ddd0021-8bb1-4be3-badd-0bf2ecb932f8",
+    //     {
+    //       users: "Michael",
+    //       sunday: calculateTimestamp(),
+    //     }
+    //   )
+    //   .then((response) => {
+    //     console.log(response);
+    //     reset();
+    //   })
+    //   .catch((error) =>
+    //     console.error("There was an error adding to sheets!", error)
+    //   );
+
+    return {
+      week: "40",
+      users: "Michael",
+      monday: "100",
+      tuesday: "100",
+      woensdag: "100",
+      thursday: "100",
+      friday: "100",
+      saturday: "100",
+      sunday: "100",
+    };
   };
+
   const h = () => {
     if (time.h === 0) {
       return "";
@@ -101,7 +123,7 @@ function TimeTracker() {
   return (
     <div>
       {status === 0 ? (
-        <button className="timerActionButon startButton" onClick={start}>
+        <button className="timerActionButton startButton" onClick={start}>
           Start
         </button>
       ) : (
@@ -110,7 +132,7 @@ function TimeTracker() {
 
       {status === 1 ? (
         <div>
-          <button className="timerActionButon stopButton" onClick={stop}>
+          <button className="timerActionButton stopButton" onClick={stop}>
             Stop
           </button>
         </div>
@@ -120,13 +142,13 @@ function TimeTracker() {
 
       {status === 2 ? (
         <div>
-          <button className="timerActionButon startButton" onClick={resume}>
+          <button className="timerActionButton startButton" onClick={resume}>
             Hervat
           </button>
-          <button className="timerActionButon resetButton" onClick={reset}>
+          <button className="timerActionButton resetButton" onClick={reset}>
             Reset
           </button>
-          <button className="timerActionButon saveButton" onClick={register}>
+          <button className="timerActionButton saveButton" onClick={register}>
             Opslaan
           </button>
         </div>

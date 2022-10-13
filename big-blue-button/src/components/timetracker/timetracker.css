@@ -1,4 +1,4 @@
-.timerActionButon{
+.timerActionButton {
   height: 100px;
   width: 100px;
   border-radius: 100%;
@@ -30,7 +30,7 @@
   background-color: rgb(18, 80, 18);
 }
 
-.centered{
+.centered {
   text-align: center;
   padding-top: 200px;
 }
