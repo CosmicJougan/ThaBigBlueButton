@@ -6,7 +6,7 @@ import TextBox from "../../core/textField";
 import React, { useState } from "react";
 import "./login.css";
 
-function Login() {
+export default function Login() {
   const [state, setState] = useState({
     username: "",
     password: "",
@@ -83,5 +83,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

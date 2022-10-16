@@ -15,14 +15,6 @@ export default function TimeTracker() {
     return [value, setValue];
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      console.log("This will run every second!");
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   const [time, setTime] = useLocalStorage("timerValue", {
     ms: 0,
     s: 0,

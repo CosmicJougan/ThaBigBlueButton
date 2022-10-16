@@ -2,7 +2,7 @@ import "./textField.css";
 import React from "react";
 import TextField from "@mui/material/TextField";
 
-function TextBox(props) {
+export default function TextBox(props) {
   return (
     <div className="form">
       <TextField
@@ -16,5 +16,3 @@ function TextBox(props) {
     </div>
   );
 }
-
-export default TextBox;
