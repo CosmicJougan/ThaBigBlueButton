@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchWrapper } from "utils/fetchWrapper";
 import "./timetracker.css";
 
-function TimeTracker() {
+export default function TimeTracker() {
   const useLocalStorage = (storageKey, fallbackState) => {
     const [value, setValue] = useState(
       JSON.parse(localStorage.getItem(storageKey)) ?? fallbackState
@@ -15,12 +15,21 @@ function TimeTracker() {
     return [value, setValue];
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("This will run every second!");
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const [time, setTime] = useLocalStorage("timerValue", {
     ms: 0,
     s: 0,
     m: 0,
     h: 0,
   });
+
   const [interv, setInterv] = useState();
 
   // Not started = 0
@@ -168,4 +177,3 @@ function TimeTracker() {
     </div>
   );
 }
-export default TimeTracker;

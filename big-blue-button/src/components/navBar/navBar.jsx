@@ -159,11 +159,7 @@ function ResponsiveAppBar() {
 
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
-                <button
-                  onClick={handleOpenUserMenu}
-                  sx={{ p: 0 }}
-                  className="navName"
-                >
+                <button onClick={handleOpenUserMenu} className="navName">
                   Michael
                 </button>
               </Tooltip>

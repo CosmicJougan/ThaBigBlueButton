@@ -1,9 +1,11 @@
 import React from "react";
 import Tabs from "components/tabs/tabs";
+import "./overview.css";
 
-function Overview(){
-    return(
-        <Tabs/>
-    )
+export default function Overview() {
+  return (
+    <div className="centered">
+      <Tabs />
+    </div>
+  );
 }
-export default Overview;
